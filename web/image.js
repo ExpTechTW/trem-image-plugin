@@ -1,4 +1,4 @@
-const refreshInterval = 2000;
+const refreshInterval = 5000;
 const imageUrls = {
     intensity: 'https://api-1.exptech.dev/file/images/intensity',
     eew: 'https://api-1.exptech.dev/file/images/eew',
@@ -72,7 +72,7 @@ async function copyImageUrl(element) {
         const url = element.src;
         await navigator.clipboard.writeText(url);
         const fileName = url.split('/').pop();
-        toast.textContent = `複製成功：${fileName}`;
+        toast.textContent = `${fileName} 複製成功`;
     } catch (err) {
         console.error('複製失敗:', err);
         toast.textContent = '複製失敗:' + err;
