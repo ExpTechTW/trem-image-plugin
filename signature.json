@@ -1,13 +1,13 @@
 {
-  "timestamp": 1739018846476,
+  "timestamp": 1739021361081,
   "version": "1.0.0",
   "fileHashes": {
     "index.js": "63c44f9993dfa3f04c00f68dbc22c19224cda3e209a90498da0769cd93108f71",
-    "info.json": "1f19864338b40fea9dd321dc180c1dfcc7e92bcd51cc26cff0b0446515fc4817",
+    "info.json": "1cb4aef5a205147de6df48d6093f7150b301522da6def09e8b6e66e35a713839",
     "web/image.css": "6bf02f902b5f23dd2b925c5e68079ed487a004987f5fbb60c0bfe8254d4b67c3",
     "web/image.html": "0159ab84998763c78fb761596d5628bf16dbca2d4ff29ddeb3ef08cc313085f7",
     "web/image.js": "490b6774439707c419ccfed0b3324d7e3c77d4cd22b1a5d8ad51fce238b69a90"
   },
-  "signature": "ad+u9nhSJfiddfl9I/qpj+ALkuCFpkV0B1sz+KAzhlQF5eSk9o82MlpAzDQS32Q3e85tQ8e+21URinrsIjw6aoFLdGVSiFWbyMtI3mqIfM5fN76CSO+V2TWWAFjhSqZQdGpodJa23Iua2TTjJL4C0os6bnGEbag0mqZfAQAXyFkEX9KaQwyAs2Yl3cW3+qYur1a0E8ik3df3Dwcxb4bquD9LYFOaFj87QUmYVSEW9G1Bq6TUdsKQCEBTLNkQTI+6owurnlyQwm5Bx2p8J3wC4hByEZ8H2MQ8FaXmOmCfOYjRxqoIIQWH41S/SrbEh5AikekfqcqeTqvrTh4mVFQf0w==",
+  "signature": "hSB6jBJjDd3EuSYOJ2DhPhWCdMdOJXXG9YmnSEeAgUWDipGg32X0CCArFDx7wkoMxUdDX8XyMJBolK7rhlGg1rlpmVAKw9tuYnUTp939hcIavTFE+/YRZPQ3t3YeE5HvhXunnydsPMw+sQd2gfVNzZ1mird0XXg4CZPxKiXfK8/+4Hl6wsG9mMU0rjc5nBSqWVJwjegFxc6Ze7D/TDaBGOWG5i+CeNmiYthpj9nz+5bhldBylHkNmd2ypFF2mPRUGUJSVI2UpdNeFVVcQ2PoWp4euSKUtziF9wj+juZlmrUZMdQN1nr79DPBqXF1qftE2TIlCHw74BnVTTNyJ0+PXQ==",
   "keyId": "official"
 }
