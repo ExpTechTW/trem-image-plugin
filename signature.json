@@ -1,0 +1,14 @@
+{
+  "timestamp": 1740297395018,
+  "version": "1.1.0",
+  "fileHashes": {
+    "index.js": "8f5f8a901d7ba8ad75887fef99882a71689f9229d7e4ba08a3da56334e4a9b6e",
+    "info.json": "104605387d7553b41810a5db63af72d1a59d193a6b37c2d27c13ff723831209d",
+    "web/image.css": "6bf02f902b5f23dd2b925c5e68079ed487a004987f5fbb60c0bfe8254d4b67c3",
+    "web/image.html": "fa971ae603dd2656c25bec40a13e7daa6d9f6ea355634369bd015c4051124139",
+    "web/image.js": "591c6679b53b06f596ff5f13c6f94f000b0614d0461f7b3eabff09546f8b0c81",
+    "web/nav.js": "c873f6ce194f4d6a2a4ceef31a9bd8ab3192f1d28544dcbe916d3163184bba69"
+  },
+  "signature": "AG9M18q3woXjkuXV4YaVzwe3XNtMFEXj7QXm6EDOUf165gKFF8XcTc+R0snZcr6nujSsa1kyd7pocM4i9pvQ6stwY/y/qROoMtIdGitQgrCG0zr2IEuPLGaZ1mMebAD+IKxnom3Z92/4QGqiRLexyL4YMRUM8EtpyhxQW7SDo4uSkoe3aQtfJCXO7r/wRbyX2EGMiVnvxqQL06TUUkc2uLOe/riUnTsS6BxrGGKgCj1S4koXCZoJla9EjNJ/LDFBDEHwo5zIqtYBd/dnrYnyfwNq+/QaqJkJVU/zRYn9aL9g0Tpt3YSYLR1wmVYoD2NGIqTUSxb31Gsw7uxl8+QqzQ==",
+  "keyId": "official"
+}
