@@ -1,5 +1,4 @@
 const { ipcRenderer } = require("electron");
-const path = require("path");
 class Plugin {
   #ctx;
   constructor(ctx) {
@@ -29,16 +28,8 @@ class Plugin {
             height         : 618,
             minWidth       : 870,
             minHeight      : 618,
-            frame          : true,
             resizable      : false,
-            maximized      : true,
-            webPreferences : {
-              nodeIntegration  : true,
-              contextIsolation : false
-            },
-
             title: "Image",
-
           },
       });
     });
