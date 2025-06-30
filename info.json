@@ -1,6 +1,6 @@
 {
     "name": "image",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": {
       "zh_tw": "顯示 ExpTech 圖片",
       "zh-Hant": "顯示 ExpTech 圖片"
@@ -9,7 +9,7 @@
       "bamboo0403"
     ],
     "dependencies": {
-      "trem": ">=3.1.1"
+      "trem": ">=3.1.4"
     },
     "resources": [
     ],
