@@ -1,62 +1,70 @@
-const host = 'mariiy.myds.me:403';
-const imageTypes = ['intensity', 'eew', 'report', 'lpgm'];
-let ws;
-let recieved_data = {
+const refreshInterval = 5000;
+const imageUrls = {
+    intensity: 'https://api-1.exptech.dev/file/images/intensity',
+    eew: 'https://api-1.exptech.dev/file/images/eew',
+    report: 'https://api-1.exptech.dev/file/images/report',
+    lpgm: 'https://api-1.exptech.dev/file/images/lpgm'
+};
+
+let lastImages = {
     intensity: '',
     eew: '',
     report: '',
-    lpgm: '',
+    lpgm: ''
 };
 
-function connectWebSocket() {
-    ws = new WebSocket(`ws://${host}`);
+async function getLatestImageUrl(baseUrl) {
+    try {
+        const response = await fetch(baseUrl);
+        const text = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const links = Array.from(doc.querySelectorAll('a'))
+            .map(a => a.href)
+            .filter(href => href.endsWith('.jpg') && !href.includes('CWAEEW1-1.jpg'));
 
-    ws.onopen = () => {
-        console.log('已連接到伺服器');
-    };
-
-    ws.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        if (data.type && data.url) {
-            console.log(`receive data: ${data.url}`);
-            recieved_data[data.type] = data.url;
-        };
-        updateImage(data);
-    };
-
-    ws.onclose = () => {
-        console.log('連接已關閉，嘗試重新連接...');
-        setTimeout(connectWebSocket, 5000);
-    };
-
-    ws.onerror = (error) => {
-        console.error('WebSocket 錯誤:', error);
-    };
-}
-
-function updateImage(data) {
-    if (data.type && data.url) {
-        const img = document.getElementById(data.type);
-        if (img) {
-            img.src = data.url;
+        if (baseUrl.includes('report')) {
+            return getLatestReportImage(links, baseUrl);
         }
+        return links.length ? `${baseUrl}/${links.sort().pop().split('/').pop()}` : null;
+    } catch (error) {
+        console.error(`Error fetching ${baseUrl}:`, error);
+        return null;
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const box = document.querySelector('.box');
-    box.innerHTML = imageTypes.map(type => `
-        <img src="" alt="" id="${type}" class="img">
-    `).join('');
-    
-    document.querySelectorAll('.img').forEach(img => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', function() {
-            copyImageUrl(this);
-        });
-    });
-    connectWebSocket();
-});
+function getLatestReportImage(links, baseUrl) {
+    const pattern = /(\d{4}-\d{4}-\d{6})\.jpg/;
+    const validImages = links
+        .map(link => {
+            const match = link.match(pattern);
+            if (match) {
+                const date = new Date(
+                    match[1].replace(/(\d{4})-(\d{2})(\d{2})-(\d{2})(\d{2})(\d{2})/, 
+                    '$1-$2-$3T$4:$5:$6')
+                );
+                return { date, link };
+            }
+            return null;
+        })
+        .filter(item => item !== null);
+
+    if (validImages.length) {
+        const latest = validImages.sort((a, b) => b.date - a.date)[0];
+        return `${baseUrl}/${latest.link.split('/').pop()}`;
+    }
+    return null;
+}
+
+async function updateImages() {
+    for (const [type, baseUrl] of Object.entries(imageUrls)) {
+        const latestUrl = await getLatestImageUrl(baseUrl);
+        if (latestUrl && latestUrl !== lastImages[type]) {
+            document.getElementById(type).src = latestUrl;
+            lastImages[type] = latestUrl;
+        }
+    }
+}
 
 async function copyImageUrl(element) {
     const toast = document.querySelector('.copy-toast');
@@ -74,4 +82,14 @@ async function copyImageUrl(element) {
     setTimeout(() => {
         toast.classList.remove('show');
     }, 2000);
-};
+}
+
+document.querySelectorAll('.img').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function() {
+        copyImageUrl(this);
+    });
+});
+
+updateImages();
+setInterval(updateImages, refreshInterval); 
