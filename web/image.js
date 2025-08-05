@@ -57,13 +57,14 @@ function getLatestReportImage(links, baseUrl) {
 }
 
 async function updateImages() {
-    for (const [type, baseUrl] of Object.entries(imageUrls)) {
+    const promises = Object.entries(imageUrls).map(async ([type, baseUrl]) => {
         const latestUrl = await getLatestImageUrl(baseUrl);
         if (latestUrl && latestUrl !== lastImages[type]) {
             document.getElementById(type).src = latestUrl;
             lastImages[type] = latestUrl;
         }
-    }
+    });
+    await Promise.all(promises);
 }
 
 async function copyImageUrl(element) {
